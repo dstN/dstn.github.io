@@ -1,5 +1,81 @@
-<script setup></script>
+<script setup>
+import TheSlide from "./TheSlide.vue";
+const options = {
+  licenseKey: "gplv3-license",
+  css3: true,
+  scrollBar: false,
+  menu: "#nav",
+  anchors: ["Home", "About", "Work", "Contact"],
+  paddingTop: "5.25rem",
+  easingcss3: "cubic-bezier(0.55, 0.085, 0.68, 0.53)",
+  scrollingSpeed: "750",
+  slidesNavigation: true,
+  controlArrows: true,
+  scrollOverflow: false,
+  //onLeave: this.onLeave, // Call the onLeave Method below
+};
+</script>
 
-<template></template>
+<template>
+  <full-page
+    ref="fullpage"
+    :options="options"
+    id="fullpage"
+  >
+    <TheSlide component="Home" />
+    <TheSlide
+      component="About"
+      :isDesktop="true"
+      :isFooter="false"
+    />
+    <TheSlide
+      component="Work"
+      :isDesktop="false"
+      :isFooter="false"
+    />
+    <TheSlide
+      component="Contact"
+      :isDesktop="true"
+      :isFooter="true"
+    />
+  </full-page>
+</template>
 
-<style scoped></style>
+<style>
+.fp-watermark {
+  display: none;
+}
+.fp-table {
+  flex-direction: row;
+}
+div.section .container,
+div.section .columns {
+  height: 100% !important;
+}
+
+div.section div.columns > div,
+div.section .fp-slidesNav,
+div.section .fp-controlArrow,
+div.slide > div {
+  transform: matrix3d(0.85, 0, 0, 0, 0, 0.85, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s,
+    transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;
+}
+
+div.section.active.fp-completely div.columns > div,
+div.section.active.fp-completely .fp-slidesNav,
+div.section.active.fp-completely .fp-controlArrow,
+div.slide.active > div {
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  opacity: 1;
+}
+
+.buttons {
+  justify-content: space-between !important;
+}
+
+div.section {
+  position: relative;
+}
+</style>

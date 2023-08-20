@@ -9,7 +9,7 @@ import TheHeader from "./components/TheHeader.vue";
   <div class="overlay"></div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 :root {
   /* Theme Colorset */
   --main-primary: #1f2d3b;

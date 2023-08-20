@@ -1,4 +1,19 @@
-<script setup></script>
+<script setup>
+const menu = [
+  {
+    title: "Home",
+  },
+  {
+    title: "About",
+  },
+  {
+    title: "Work",
+  },
+  {
+    title: "Contact",
+  },
+];
+</script>
 
 <template>
   <nav
@@ -23,15 +38,14 @@
     >
       <div class="navbar-end">
         <span
-          v-bind:key="title"
-          v-for="title in menuItems"
+          v-bind:key="item"
+          v-for="item in menu"
         >
-          <!-- Iterate through menuItems from data.json -->
           <a
-            :href="`#${title}`"
-            :data-menuanchor="title"
-            class="navbar-item active"
-            ><span :data-hover="title">{{ title }}</span></a
+            :href="`#${item.title}`"
+            :data-menuanchor="item.title"
+            class="navbar-item"
+            ><span :data-hover="item.title">{{ item.title }}</span></a
           >
         </span>
       </div>
