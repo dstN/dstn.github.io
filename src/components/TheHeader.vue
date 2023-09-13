@@ -1,4 +1,7 @@
 <script setup>
+defineProps({
+  toggle: Boolean,
+});
 const menu = [
   {
     title: "Home",
@@ -24,7 +27,8 @@ const menu = [
     <div class="navbar-brand">
       <div
         class="navbar-burger burger"
-        data-target="navBar"
+        :class="toggle ? 'is-active' : ''"
+        @click="$emit('toggleNav')"
       >
         <span></span>
         <span></span>
@@ -35,6 +39,7 @@ const menu = [
     <div
       id="navBar"
       class="navbar-menu"
+      :class="toggle ? 'is-active' : ''"
     >
       <div class="navbar-end">
         <span
@@ -44,6 +49,7 @@ const menu = [
           <a
             :href="`#${item.title}`"
             :data-menuanchor="item.title"
+            @click="$emit('toggleNav', false)"
             class="navbar-item"
             ><span :data-hover="item.title">{{ item.title }}</span></a
           >
@@ -51,11 +57,21 @@ const menu = [
       </div>
     </div>
   </nav>
+  <div
+    class="overlay"
+    :class="toggle ? 'active' : ''"
+  ></div>
 </template>
 
 <style lang="scss" scoped>
 .navbar-burger {
   color: var(--main-secondary);
+  span {
+    transition: all 0.75s ease;
+  }
+  &:hover {
+    background: transparent;
+  }
 }
 .navbar-menu.is-active {
   display: block;
@@ -64,22 +80,23 @@ const menu = [
   min-height: calc(100vh - 6.25rem);
   visibility: visible;
   opacity: 1;
-  top: 3.25rem;
+  transform: scale(1);
+  transition: all 0.75s ease;
 }
 .navbar-menu {
   display: block;
   background-color: var(--main-primary);
   height: calc(100vh - 6.25rem);
   min-height: calc(100vh - 6.25rem);
-  visibility: visible;
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
   position: absolute;
-  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  top: -100vh;
-  transition: all 0.75s ease;
+  top: 10vh;
+  transform: scale(0);
+  transition: opacity 0.75s ease, visibility 0.75s ease, transform 0s ease 0.75s;
 }
 @media (max-width: 1023px) {
   .navbar-menu {
@@ -132,9 +149,13 @@ const menu = [
   .navbar {
     background-color: transparent !important;
   }
+  .navbar-burger {
+    display: none;
+  }
   .navbar-menu {
     visibility: visible;
     opacity: 100;
+    transform: scale(1);
     top: 0;
     position: static;
     height: auto;

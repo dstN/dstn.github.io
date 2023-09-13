@@ -1,5 +1,8 @@
 <script setup>
 import TheSlide from "./TheSlide.vue";
+defineProps({
+  toggle: Boolean,
+});
 const options = {
   licenseKey: "gplv3-license",
   css3: true,
@@ -17,28 +20,34 @@ const options = {
 </script>
 
 <template>
-  <full-page
-    ref="fullpage"
-    :options="options"
-    id="fullpage"
+  <div
+    class="fullpage-wrapper"
+    :class="toggle ? 'blurred' : ''"
   >
-    <TheSlide component="Home" />
-    <TheSlide
-      component="About"
-      :isDesktop="true"
-      :isFooter="false"
-    />
-    <TheSlide
-      component="Work"
-      :isDesktop="false"
-      :isFooter="false"
-    />
-    <TheSlide
-      component="Contact"
-      :isDesktop="true"
-      :isFooter="true"
-    />
-  </full-page>
+    <full-page
+      ref="fullpage"
+      :options="options"
+      id="fullpage"
+    >
+      <TheSlide component="Home" />
+      <TheSlide
+        component="About"
+        :isDesktop="true"
+        :isFooter="false"
+      />
+      <TheSlide
+        component="Work"
+        :isDesktop="false"
+        :isFooter="false"
+        class="work"
+      />
+      <TheSlide
+        component="Contact"
+        :isDesktop="true"
+        :isFooter="true"
+      />
+    </full-page>
+  </div>
 </template>
 
 <style>

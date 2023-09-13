@@ -1,4 +1,5 @@
 <script setup>
+import profilePic from "@assets/dustin_tramm_resized.png";
 const heading = "Hey! I'm Dustin.";
 const subHeading = "Front End Developer from Hamburg, Germany. I build things.";
 const altText =
@@ -19,12 +20,13 @@ const altText =
       <picture>
         <source
           srcset="../../assets/dustin_tramm_resized.webp"
-          media="(max-width: 1023px)"
+          media="(max-width: 1199px)"
         />
         <img
           :alt="altText"
           class="is-rounded"
-          src="../../assets/dustin_tramm_resized.png"
+          :src="profilePic"
+          loading="lazy"
         />
       </picture>
     </figure>

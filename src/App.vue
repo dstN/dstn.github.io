@@ -1,12 +1,25 @@
 <script setup>
+import { ref } from "vue";
 import TheMain from "./components/TheMain.vue";
 import TheHeader from "./components/TheHeader.vue";
+
+const navToggle = ref(false);
+
+function toggleNav(preset = undefined) {
+  if (preset === false) {
+    navToggle.value = false;
+  } else {
+    navToggle.value = navToggle.value ? false : true;
+  }
+}
 </script>
 
 <template>
-  <TheHeader />
-  <TheMain />
-  <div class="overlay"></div>
+  <TheHeader
+    @toggle-nav="toggleNav"
+    :toggle="navToggle"
+  />
+  <TheMain :toggle="navToggle" />
 </template>
 
 <style lang="scss">
@@ -31,8 +44,10 @@ html {
 }
 
 .fullpage-wrapper {
+  transition: all 0.75s ease 0.35s;
   &.blurred {
     filter: blur(4px);
+    transition: all 0.75s ease;
   }
 }
 .overlay {
@@ -45,12 +60,13 @@ html {
   opacity: 0;
   height: 100vh;
   width: 100vw;
-  transition: all 0.75s ease;
+  transition: all 0.75s ease 0.15s;
   &.active {
     left: 0;
     z-index: 5;
     visibility: visible;
     opacity: 0.5;
+    transition: all 0.75s ease;
   }
 }
 
