@@ -67,7 +67,7 @@ const menu = [
 .navbar-burger {
   color: var(--main-secondary);
   span {
-    transition: all 0.75s ease;
+    transition: all 0.5s ease;
   }
   &:hover {
     background: transparent;
@@ -81,7 +81,7 @@ const menu = [
   visibility: visible;
   opacity: 1;
   transform: scale(1);
-  transition: all 0.75s ease;
+  transition: all 0.5s ease;
 }
 .navbar-menu {
   display: block;
@@ -96,7 +96,7 @@ const menu = [
   right: 0;
   top: 10vh;
   transform: scale(0);
-  transition: opacity 0.75s ease, visibility 0.75s ease, transform 0s ease 0.75s;
+  transition: opacity 0.5s ease, visibility 0.5s ease, transform 0s ease 0.5s;
 }
 @media (max-width: 1023px) {
   .navbar-menu {
@@ -178,7 +178,7 @@ const menu = [
   .navbar a span {
     position: relative;
     display: inline-block;
-    transition: transform 0.75s cubic-bezier(0, 1.07, 0.89, 0.99);
+    transition: transform 0.5s cubic-bezier(0, 1.07, 0.89, 0.99);
     will-change: transform;
   }
   .navbar a span:before {

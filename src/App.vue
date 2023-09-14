@@ -44,10 +44,10 @@ html {
 }
 
 .fullpage-wrapper {
-  transition: all 0.75s ease 0.35s;
+  transition: all 0.5s ease 0.25s;
   &.blurred {
     filter: blur(4px);
-    transition: all 0.75s ease;
+    transition: all 0.5s ease;
   }
 }
 .overlay {
@@ -60,13 +60,13 @@ html {
   opacity: 0;
   height: 100vh;
   width: 100vw;
-  transition: all 0.75s ease 0.15s;
+  transition: all 0.5s ease 0.05s;
   &.active {
     left: 0;
     z-index: 5;
     visibility: visible;
     opacity: 0.5;
-    transition: all 0.75s ease;
+    transition: all 0.5s ease;
   }
 }
 

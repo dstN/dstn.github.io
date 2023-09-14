@@ -12,7 +12,7 @@ const options = {
   anchors: ["Home", "About", "Work", "Contact"],
   paddingTop: "5.25rem",
   easingcss3: "cubic-bezier(0.55, 0.085, 0.68, 0.53)",
-  scrollingSpeed: "750",
+  scrollingSpeed: "500",
   slidesNavigation: true,
   controlArrows: true,
   scrollOverflow: false,
@@ -72,8 +72,8 @@ div.section .fp-controlArrow,
 div.slide > div {
   transform: matrix3d(0.85, 0, 0, 0, 0, 0.85, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   opacity: 0;
-  transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s,
-    transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;
+  transition: opacity 0.5s cubic-bezier(0.5, 0, 0, 1) 0s,
+    transform 0.5s cubic-bezier(0.5, 0, 0, 1) 0s;
 }
 
 div.section.active.fp-completely div.columns > div,

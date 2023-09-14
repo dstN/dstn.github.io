@@ -50,7 +50,7 @@ img {
   background-size: 500% 500%;
   opacity: 0.75;
   animation: gradient 4s ease-in-out infinite;
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.2s;
   border: 2px solid transparent;
   filter: grayscale(25%);
   max-width: 440px !important;
