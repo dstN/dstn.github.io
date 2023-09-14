@@ -7,7 +7,7 @@ const props = defineProps(["reference"]);
     <figure class="image is-16by9">
       <img
         :alt="'Picture of different viewports from ' + props.reference.name"
-        :data-src="`/src/assets/references/${props.reference.img}`"
+        :data-src="`/references/${props.reference.img}`"
       />
     </figure>
   </div>

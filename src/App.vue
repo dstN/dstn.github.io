@@ -87,19 +87,5 @@ html {
   .columns.is-vcentered.is-desktop .column {
     width: 100%;
   }
-
-  .buttons {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-  }
 }
 </style>

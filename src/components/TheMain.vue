@@ -16,6 +16,7 @@ const options = {
   slidesNavigation: true,
   controlArrows: true,
   scrollOverflow: false,
+  lazyLoading: true,
   credits: {
     enabled: false,
   },
@@ -81,10 +82,6 @@ div.section.active.fp-completely .fp-controlArrow,
 div.slide.active > div {
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   opacity: 1;
-}
-
-.buttons {
-  justify-content: space-between !important;
 }
 
 div.section {
