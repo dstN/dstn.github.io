@@ -3,6 +3,7 @@ import TheSlide from "./TheSlide.vue";
 defineProps({
   toggle: Boolean,
 });
+
 const options = {
   licenseKey: "gplv3-license",
   css3: true,
@@ -15,7 +16,9 @@ const options = {
   slidesNavigation: true,
   controlArrows: true,
   scrollOverflow: false,
-  //onLeave: this.onLeave, // Call the onLeave Method below
+  credits: {
+    enabled: false,
+  },
 };
 </script>
 
@@ -37,7 +40,7 @@ const options = {
       />
       <TheSlide
         component="Work"
-        :isDesktop="false"
+        :isDesktop="true"
         :isFooter="false"
         class="work"
       />
@@ -86,5 +89,6 @@ div.slide.active > div {
 
 div.section {
   position: relative;
+  padding: 3rem 1.5rem;
 }
 </style>

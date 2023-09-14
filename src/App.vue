@@ -37,7 +37,7 @@ function toggleNav(preset = undefined) {
 }
 
 html {
-  font-size: 16px;
+  font-size: 16px !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 0rem !important;

@@ -113,7 +113,6 @@ const menu = [
       font-size: 2.25rem;
       text-align: center;
       &.active,
-      &:focus,
       &:hover {
         color: var(--main-secondary) !important;
       }
@@ -146,6 +145,12 @@ const menu = [
   }
 }
 @media (min-width: 1024px) {
+  a.navbar-item:focus,
+  a.navbar-item:focus-within,
+  .navbar-link:focus,
+  .navbar-link:focus-within {
+    color: var(--light-text) !important;
+  }
   .navbar {
     background-color: transparent !important;
   }
@@ -182,7 +187,8 @@ const menu = [
     content: attr(data-hover);
     transform: translateZ(0);
   }
-  .navbar a:hover span {
+  .navbar a:hover span,
+  .navbar a.active span {
     transform: translateY(-100%);
   }
   .navbar a.active,

@@ -6,9 +6,11 @@ date = date.getFullYear();
 <template>
   <footer class="footer">
     <div
-      class="columns is-mobile is-size-6-mobile is-size-5-tablet is-size-5-desktop is-size-4-fullhd"
+      class="columns is-desktop is-size-6-mobile is-size-5-tablet is-size-5-desktop is-size-4-fullhd"
     >
-      <div class="column is-half has-text-left">
+      <div
+        class="column is-half-desktop has-text-centered has-text-left-desktop"
+      >
         Made with
         <a
           href="https://alvarotrigo.com/fullPage/"
@@ -20,7 +22,9 @@ date = date.getFullYear();
         and ❤️ in Hamburg
       </div>
 
-      <div class="column is-half has-text-right">
+      <div
+        class="column is-half-desktop has-text-centered has-text-right-desktop"
+      >
         &copy; {{ date }} - by dstN
       </div>
     </div>
@@ -30,7 +34,7 @@ date = date.getFullYear();
 <style lang="scss" scoped>
 .footer {
   position: absolute;
-  bottom: -2.5rem;
+  bottom: -2.75rem;
   width: 100%;
   background: transparent;
   border-top: 2px solid transparent;

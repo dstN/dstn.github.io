@@ -20,7 +20,7 @@ const altText =
       <picture>
         <source
           srcset="../../assets/dustin_tramm_resized.webp"
-          media="(max-width: 1199px)"
+          media="(max-width: 1023px)"
         />
         <img
           :alt="altText"
@@ -33,7 +33,13 @@ const altText =
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+figure {
+  padding-top: 0 !important;
+  img {
+    position: static !important;
+  }
+}
 img {
   background: linear-gradient(
     -45deg,
@@ -47,8 +53,8 @@ img {
   transition: ease-in-out 0.3s;
   border: 2px solid transparent;
   filter: grayscale(25%);
-  max-width: 440px;
-  max-height: 440px;
+  max-width: 440px !important;
+  max-height: 440px !important;
   text-align: center;
   margin: auto;
 }

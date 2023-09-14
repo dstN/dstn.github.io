@@ -35,20 +35,6 @@ function getAge() {
 </template>
 
 <style scoped>
-.button .icon:first-child:not(:last-child) {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.button.is-large {
-  padding-bottom: calc(0.25em - 1px);
-  padding-top: calc(0.25em - 1px);
-  padding-right: 0.3em;
-  padding-left: 0.3em;
-  font-size: 1.5em;
-  height: 1.75em;
-}
-
 .notification {
   padding: 0.5rem;
   margin-bottom: 0.75rem !important;
@@ -59,20 +45,6 @@ function getAge() {
 }
 
 @media (min-width: 768px) {
-  .button .icon:first-child:not(:last-child) {
-    margin-left: calc(-0.5em - 1px);
-    margin-right: 0.25em;
-  }
-
-  .button.is-large {
-    padding-bottom: calc(0.5em - 1px);
-    padding-top: calc(0.5em - 1px);
-    padding-right: 1em;
-    padding-left: 1em;
-    font-size: 1.5em;
-    height: 2.5em;
-  }
-
   .notification {
     padding: 1.25rem 2.5rem 1.25rem 1.5rem;
     margin-bottom: 1.5rem !important;
@@ -80,23 +52,6 @@ function getAge() {
 
   .message-body {
     padding: 1.25rem 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .buttons > div {
-    width: 100%;
-  }
-
-  .buttons .button {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1408px) {
-  .buttons > div,
-  .buttons .button {
-    width: inherit !important;
   }
 }
 </style>
