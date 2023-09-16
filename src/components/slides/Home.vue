@@ -1,6 +1,4 @@
 <script setup>
-import profilePic from "../../../public/dustin_tramm_resized.png";
-import profilePicWebp from "../../../public/dustin_tramm_resized.webp";
 const heading = "Hey! I'm Dustin.";
 const subHeading = "Front End Developer from Hamburg, Germany. I build things.";
 const altText =
@@ -20,13 +18,13 @@ const altText =
     <figure class="image is-1by1">
       <picture>
         <source
-          :srcset="profilePicWebp"
+          srcset="/dustin_tramm_resized.png"
           media="(max-width: 1023px)"
         />
         <img
           :alt="altText"
           class="is-rounded"
-          :src="profilePic"
+          src="/dustin_tramm_resized.png"
         />
       </picture>
     </figure>
