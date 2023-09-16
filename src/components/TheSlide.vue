@@ -1,5 +1,5 @@
 <script setup>
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, computed } from "vue";
 const props = defineProps(["component", "isDesktop", "isFooter"]);
 
 const Slide = defineAsyncComponent(() =>
@@ -9,6 +9,10 @@ const Slide = defineAsyncComponent(() =>
 const Footer = props.isFooter
   ? defineAsyncComponent(() => import("./TheFooter.vue"))
   : "";
+
+const isActiveClass = computed(() => {
+  return props.isDesktop ? "is-desktop" : "";
+});
 
 const projects = [
   {
@@ -223,7 +227,7 @@ const projects = [
     >
       <div class="container">
         <div
-          :class="isDesktop ? 'is-desktop' : ''"
+          :class="isActiveClass"
           class="columns is-vcentered"
         >
           <Slide :reference="reference" />
@@ -235,7 +239,7 @@ const projects = [
       class="container"
     >
       <div
-        :class="isDesktop ? 'is-desktop' : ''"
+        :class="isActiveClass"
         class="columns is-vcentered"
       >
         <Slide />

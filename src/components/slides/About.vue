@@ -1,9 +1,4 @@
 <script setup>
-const age = getAge();
-const mainText = `I'm a ${age}-year-old front end developer based in Hamburg, Germany. I believe art to be an intermezzo of perfectly executed technology, craftsmanship and imagination. That is why design and realisation of front ends is one of the most sophisticated tasks.`;
-const subText =
-  "I love everything related to web development, for example trying out new bleeding edge technologies to find the best suitable technology for the given task. In my spare time, I spend time reading tech news, especially pc hardware related news because building PCs is my second biggest passion.";
-const heading = "About me";
 function getAge() {
   let today = new Date();
   let birthDate = new Date("1990-08-21");
@@ -18,17 +13,24 @@ function getAge() {
 
 <template>
   <div class="column is-one-fifths-widescreen">
-    <h2 class="is-size-3 title">{{ heading }}</h2>
+    <h2 class="is-size-3 title">About me</h2>
   </div>
   <div
     class="column is-full-mobile is-four-fifths-desktop is-four-fifths-fullhd"
   >
     <div class="notification is-primary is-size-6-mobile is-size-4-tablet">
-      {{ mainText }}
+      I'm a {{ getAge() }}-year-old front end developer based in Hamburg,
+      Germany. I believe art to be an intermezzo of perfectly executed
+      technology, craftsmanship and imagination. That is why design and
+      realisation of front ends is one of the most sophisticated tasks.
     </div>
     <article class="message">
       <div class="message-body is-size-6 is-size-4-tablet">
-        {{ subText }}
+        I love everything related to web development, for example trying out new
+        bleeding edge technologies to find the best suitable technology for the
+        given task. In my spare time, I spend time reading tech news, especially
+        pc hardware related news because building PCs is my second biggest
+        passion.
       </div>
     </article>
   </div>

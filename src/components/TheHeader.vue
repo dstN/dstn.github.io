@@ -1,21 +1,12 @@
 <script setup>
-defineProps({
+import { computed } from "vue";
+const props = defineProps({
   toggle: Boolean,
 });
-const menu = [
-  {
-    title: "Home",
-  },
-  {
-    title: "About",
-  },
-  {
-    title: "Work",
-  },
-  {
-    title: "Contact",
-  },
-];
+const menu = ["Home", "About", "Work", "Contact"];
+const isActiveClass = computed(() => {
+  return props.toggle ? "is-active" : "";
+});
 </script>
 
 <template>
@@ -27,7 +18,7 @@ const menu = [
     <div class="navbar-brand">
       <div
         class="navbar-burger burger"
-        :class="toggle ? 'is-active' : ''"
+        :class="isActiveClass"
         @click="$emit('toggleNav')"
       >
         <span></span>
@@ -39,7 +30,7 @@ const menu = [
     <div
       id="navBar"
       class="navbar-menu"
-      :class="toggle ? 'is-active' : ''"
+      :class="isActiveClass"
     >
       <div class="navbar-end">
         <span
@@ -47,11 +38,11 @@ const menu = [
           v-for="item in menu"
         >
           <a
-            :href="`#${item.title}`"
-            :data-menuanchor="item.title"
+            :href="`#${item}`"
+            :data-menuanchor="item"
             @click="$emit('toggleNav', false)"
             class="navbar-item"
-            ><span :data-hover="item.title">{{ item.title }}</span></a
+            ><span :data-hover="item">{{ item }}</span></a
           >
         </span>
       </div>

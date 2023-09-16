@@ -1,4 +1,4 @@
-@import "@/scss/theme";
+@import "@/assets/scss/theme";
 @import "@node_modules/bulma/sass/utilities/_all";
 @import "@node_modules/bulma/sass/base/minireset.sass";
 @import "@node_modules/bulma/sass/base/generic.sass";
@@ -17,7 +17,7 @@
 @import "@node_modules/bulma/sass/form/shared.sass";
 @import "@node_modules/bulma/sass/form/tools.sass";
 @import "@node_modules/bulma/sass/helpers/typography.sass";
-@import "@/fonts/font";
+@import "@/assets/fonts/font";
 
 .navbar {
   &.is-transparent {

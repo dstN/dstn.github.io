@@ -1,16 +1,11 @@
-<script setup>
-const heading = "Hey! I'm Dustin.";
-const subHeading = "Front End Developer from Hamburg, Germany. I build things.";
-const altText =
-  "Picture from Dustin Tramm, Front End Developer from Hamburg, Germany.";
-</script>
+<script setup></script>
 
 <template>
   <div class="column is-8">
-    <h1 class="title">{{ heading }}</h1>
-    <!-- Call data given from attributes -->
-    <h2 class="subtitle">{{ subHeading }}</h2>
-    <!-- Call data given from attributes -->
+    <h1 class="title">Hey! I'm Dustin.</h1>
+    <h2 class="subtitle">
+      Front End Developer from Hamburg, Germany. I build things.
+    </h2>
   </div>
   <div
     class="column is-one-third-desktop is-full-mobile is-three-fifths-tablet"
@@ -22,7 +17,7 @@ const altText =
           media="(max-width: 1023px)"
         />
         <img
-          :alt="altText"
+          alt="Picture from Dustin Tramm, Front End Developer from Hamburg, Germany."
           class="is-rounded"
           src="/dustin_tramm_resized.png"
         />

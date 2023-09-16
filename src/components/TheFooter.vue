@@ -1,6 +1,5 @@
 <script setup>
-let date = new Date();
-date = date.getFullYear();
+let date = new Date().getFullYear();
 </script>
 
 <template>
