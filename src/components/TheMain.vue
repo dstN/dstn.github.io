@@ -1,7 +1,8 @@
 <script setup>
 import TheSlide from "./TheSlide.vue";
-defineProps({
+const props = defineProps({
   toggle: Boolean,
+  menu: Array,
 });
 
 const options = {
@@ -9,8 +10,9 @@ const options = {
   css3: true,
   scrollBar: false,
   menu: "#nav",
-  anchors: ["Home", "About", "Work", "Contact"],
+  anchors: props.menu,
   paddingTop: "5.25rem",
+  paddingBottom: "5.25rem",
   easingcss3: "cubic-bezier(0.55, 0.085, 0.68, 0.53)",
   scrollingSpeed: "350",
   slidesNavigation: true,
@@ -26,7 +28,7 @@ const options = {
 <template>
   <div
     class="fullpage-wrapper"
-    :class="toggle ? 'blurred' : ''"
+    :class="props.toggle ? 'blurred' : ''"
   >
     <full-page
       ref="fullpage"

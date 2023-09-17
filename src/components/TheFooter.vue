@@ -33,7 +33,7 @@ let date = new Date().getFullYear();
 <style lang="scss" scoped>
 .footer {
   position: absolute;
-  bottom: -2.75rem;
+  bottom: -5.25rem;
   width: 100%;
   background: transparent;
   border-top: 2px solid transparent;

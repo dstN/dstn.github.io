@@ -5,6 +5,8 @@ import TheHeader from "./components/TheHeader.vue";
 
 const navToggle = ref(false);
 
+const menu = ["Home", "About", "Work", "Contact"];
+
 function toggleNav(preset = undefined) {
   if (preset === false) {
     navToggle.value = false;
@@ -18,8 +20,12 @@ function toggleNav(preset = undefined) {
   <TheHeader
     @toggle-nav="toggleNav"
     :toggle="navToggle"
+    :menu="menu"
   />
-  <TheMain :toggle="navToggle" />
+  <TheMain
+    :menu="menu"
+    :toggle="navToggle"
+  />
 </template>
 
 <style lang="scss">

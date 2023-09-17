@@ -2,8 +2,8 @@
 import { computed } from "vue";
 const props = defineProps({
   toggle: Boolean,
+  menu: Array,
 });
-const menu = ["Home", "About", "Work", "Contact"];
 const isActiveClass = computed(() => {
   return props.toggle ? "is-active" : "";
 });
