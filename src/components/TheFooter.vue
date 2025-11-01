@@ -31,6 +31,8 @@ let date = new Date().getFullYear();
 </template>
 
 <style lang="scss" scoped>
+@use "sass:color";
+
 .footer {
   position: absolute;
   bottom: -5.25rem;
@@ -38,7 +40,7 @@ let date = new Date().getFullYear();
   background: transparent;
   border-top: 2px solid transparent;
   padding: 1rem 0;
-  color: lighten(#2b3e50, 30%);
+  color: color.adjust(#2b3e50, $lightness: 30%);
   @media (min-width: 1024px) {
     padding: 1.5rem 0 1.5rem;
   }
