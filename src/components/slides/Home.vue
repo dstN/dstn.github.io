@@ -13,13 +13,17 @@
     <figure class="image is-1by1">
       <picture>
         <source
-          srcset="/dustin_tramm_resized.png"
-          media="(max-width: 1023px)"
+          srcset="/dustin_tramm.webp"
+          type="image/webp"
+        />
+        <source
+          srcset="/dustin_tramm.png"
+          type="image/png"
         />
         <img
           alt="Picture from Dustin Tramm, Front End Developer from Hamburg, Germany."
           class="is-rounded"
-          src="/dustin_tramm_resized.png"
+          src="/dustin_tramm.png"
         />
       </picture>
     </figure>
