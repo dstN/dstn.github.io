@@ -24,6 +24,8 @@
           alt="Picture from Dustin Tramm, Front End Developer from Hamburg, Germany."
           class="is-rounded"
           src="/dustin_tramm.png"
+          width="364"
+          height="364"
         />
       </picture>
     </figure>
