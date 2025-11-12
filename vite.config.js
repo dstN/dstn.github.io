@@ -33,7 +33,7 @@ export default defineConfig({
       output: {
         // Manual chunk splitting for better caching and loading
         manualChunks: {
-          "vue-vendor": ["vue", "vue-router"],
+          "vue-vendor": ["vue"],
         },
       },
     },
@@ -41,13 +41,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 600,
     // Enable CSS code splitting
     cssCodeSplit: true,
-    // Minify with terser for better compression
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    // Use esbuild for minification (default, faster than terser)
+    minify: "esbuild",
   },
 });
