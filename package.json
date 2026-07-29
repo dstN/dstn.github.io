@@ -11,11 +11,14 @@
     "fonts": "fli download"
   },
   "dependencies": {
-    "astro": "^6.4.5",
-    "typescript": "^6.0.3"
+    "astro": "^7.0",
+    "typescript": "^7.0"
   },
   "devDependencies": {
-    "@dstn/fli": "^1.0.0",
-    "lightningcss": "^1.32.0"
+    "@dstn/fli": "^2.0.0",
+    "lightningcss": "^1.33.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }
