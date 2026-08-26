@@ -1,0 +1,116 @@
+---
+/**
+ * Theme- and viewport-aware project screenshot.
+ *
+ * The site switches themes with a `.light` class on <html>, which `<picture media>`
+ * cannot read — so both themes sit in the DOM and CSS picks one. That costs nothing:
+ * a `display: none` element never intersects the viewport, so its `loading="lazy"`
+ * image is not fetched, and `display: none` subtrees are not exposed to assistive
+ * tech, so both copies can carry the same alt text without a double announcement.
+ *
+ * The "feature" variant composes the desktop and phone captures in CSS rather than
+ * baking them into one flattened image: each keeps its own frame, the page ground
+ * shows through between them in either theme, and the phone can simply be dropped
+ * below 640px, where `<picture>` already swaps the main image to the phone capture.
+ */
+import shots from "../data/shots.json";
+
+interface ShotFile {
+  file: string;
+  width: number;
+  height: number;
+}
+type ShotSizes = Record<string, ShotFile | undefined>;
+type ShotFrame = Record<string, ShotSizes | undefined>;
+interface ShotSite {
+  singleTheme: boolean;
+  frames: Record<string, ShotFrame | undefined>;
+}
+
+interface Props {
+  slug: string;
+  frame: string;
+  alt: string;
+  /** "feature" composes desktop + phone; "thumb" is the single list-row image. */
+  variant?: "feature" | "thumb";
+  class?: string;
+}
+
+const { slug, frame, alt, variant = "feature", class: className } = Astro.props;
+
+const manifest = shots as unknown as Record<string, ShotSite | undefined>;
+const site = manifest[slug];
+if (!site) {
+  throw new Error(`ProjectShot: no captures for "${slug}". Run \`npm run shots -- ${slug}\`.`);
+}
+
+const frameData = site.frames[frame];
+if (!frameData) {
+  const available = Object.keys(site.frames).join(", ");
+  throw new Error(`ProjectShot: "${slug}" has no frame "${frame}". Available: ${available}`);
+}
+
+const themes = site.singleTheme ? (["dark"] as const) : (["dark", "light"] as const);
+
+function pick(theme: string, size: string): ShotFile {
+  const file = frameData?.[theme]?.[size];
+  if (!file) {
+    throw new Error(`ProjectShot: missing ${slug}/${frame} ${theme} ${size}. Re-run \`npm run shots -- ${slug}\`.`);
+  }
+  return file;
+}
+
+const isFeature = variant === "feature";
+
+const sources = themes.map((theme) => ({
+  theme,
+  main: pick(theme, isFeature ? "desktop" : "thumb"),
+  phone: isFeature ? pick(theme, "mobile") : null,
+}));
+
+/** Only used to vary the alt text so the phone is not announced as a duplicate. */
+const phoneAlt = `${alt} — mobile layout`;
+---
+
+<div class:list={["shot", `shot--${variant}`, className]}>
+  {
+    sources.map(({ theme, main, phone }) => (
+      <Fragment>
+        <picture class:list={["shot-img", !site.singleTheme && `shot-img--${theme}`]}>
+          {phone && (
+            <source
+              media="(max-width: 640px)"
+              srcset={`/images/work/${phone.file}`}
+              width={phone.width}
+              height={phone.height}
+            />
+          )}
+          <img
+            src={`/images/work/${main.file}`}
+            alt={alt}
+            width={main.width}
+            height={main.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+
+        {phone && (
+          /* Wrapped in <picture> deliberately: a display:none <picture> never
+             fetches its image, while a bare display:none <img loading="lazy">
+             still does, which would pull in the inactive theme's phone shot. */
+          <picture class:list={["shot-phone", !site.singleTheme && `shot-img--${theme}`]}>
+            <img
+              src={`/images/work/${phone.file}`}
+              alt={phoneAlt}
+              width={phone.width}
+              height={phone.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        )}
+      </Fragment>
+    ))
+  }
+</div>

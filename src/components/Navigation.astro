@@ -1,16 +1,28 @@
 ---
+interface Props {
+  /**
+   * Prefix for the section anchors. Empty on the homepage, "/" on a subpage so
+   * the links navigate home first instead of pointing at anchors that are not there.
+   */
+  base?: string;
+  /** Scroll spy only makes sense where the anchors it highlights actually exist. */
+  spy?: boolean;
+}
+
+const { base = "", spy = true } = Astro.props;
+
 const navLinks = [
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Stack" },
-  { href: "#resume", label: "Experience" },
-  { href: "#contact", label: "Contact" },
-];
+  { hash: "#projects", label: "Projects" },
+  { hash: "#skills", label: "Stack" },
+  { hash: "#resume", label: "Experience" },
+  { hash: "#contact", label: "Contact" },
+].map((link) => ({ ...link, href: `${base}${link.hash}` }));
 ---
 
-<nav class="nav" id="nav" aria-label="Main navigation">
+<nav class="nav" id="nav" aria-label="Main navigation" data-spy={spy ? "on" : "off"}>
   <div class="nav-inner">
 
-    <a href="#" class="nav-logo" aria-label="dstN — back to top">
+    <a href={base || "#"} class="nav-logo" aria-label="dstN — back to top">
       dstN<span>.</span>
     </a>
 
@@ -82,11 +94,14 @@ const navLinks = [
     updateIcons();
   });
 
-  // Scroll spy
+  // Scroll spy — skipped on subpages, where the nav links point at another document.
   const nav = document.getElementById("nav")!;
   const navLinksContainer = document.getElementById("nav-links")!;
   const links = navLinksContainer.querySelectorAll("a");
-  const sections = Array.from(document.querySelectorAll("section[id]")) as HTMLElement[];
+  const spyEnabled = nav.dataset.spy !== "off";
+  const sections = spyEnabled
+    ? (Array.from(document.querySelectorAll("section[id]")) as HTMLElement[])
+    : [];
 
   // Cache offsetTop values — reads happen once, not on every scroll event
   let sectionOffsets: { id: string; top: number }[] = [];
@@ -111,8 +126,9 @@ const navLinks = [
 
     // All writes at end — no forced reflow
     nav.classList.toggle("scrolled", scrollY > 40);
+    if (!spyEnabled) return;
     links.forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href") === `#${currentId}`);
+      link.classList.toggle("active", link.hash === `#${currentId}`);
     });
   }
 

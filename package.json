@@ -8,7 +8,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "fonts": "fli download"
+    "fonts": "fli download",
+    "shots": "node scripts/shots.mjs",
+    "verify:shots": "node scripts/verify-shots.mjs"
   },
   "dependencies": {
     "astro": "^7.0",
@@ -16,7 +18,9 @@
   },
   "devDependencies": {
     "@dstn/fli": "^2.0.0",
-    "lightningcss": "^1.33.0"
+    "lightningcss": "^1.33.0",
+    "playwright": "^1.62.1",
+    "sharp": "^0.35.4"
   },
   "allowScripts": {
     "esbuild@0.28.1": true

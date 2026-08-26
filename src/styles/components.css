@@ -297,7 +297,149 @@ html:not(.light) .opening-image img {
   margin-bottom: var(--s-xl);
 }
 
-/* ─── Projects — List, not cards ─── */
+/* ─── Projects — three densities, no card grid ─── */
+
+.projects-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-lg);
+  flex-wrap: wrap;
+}
+
+.projects-index-link,
+.projects-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-sm);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--primary);
+  transition: color 0.2s var(--ease), gap 0.2s var(--ease);
+
+  & svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:hover {
+    color: var(--accent);
+    gap: var(--s-md);
+  }
+}
+
+.projects-footer-link {
+  margin-top: var(--s-3xl);
+  padding-top: var(--s-xl);
+  border-top: 1px solid var(--rule);
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.projects-subhead {
+  margin-top: var(--s-4xl);
+  padding-bottom: var(--s-md);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+/* ─── Case studies — asymmetric, alternating ─── */
+
+.case-studies {
+  margin-top: var(--s-2xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.case {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-xl);
+  padding-block: var(--s-3xl);
+  border-top: 1px solid var(--rule);
+
+  &:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (min-width: 880px) {
+    grid-template-columns: 1fr 1.15fr;
+    gap: var(--s-3xl);
+    align-items: center;
+  }
+}
+
+.case--reverse {
+  @media (min-width: 880px) {
+    & .case-content {
+      order: 2;
+    }
+    & .case-visual {
+      order: 1;
+    }
+  }
+}
+
+.case-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-md);
+}
+
+.case-name {
+  display: flex;
+  align-items: center;
+  gap: var(--s-sm);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+}
+
+.featured-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.case-summary {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 60ch;
+}
+
+.case-proof {
+  margin: 0;
+  padding: var(--s-md) var(--s-lg);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: oklch(from var(--accent) l c h / 0.07);
+  border: 1px solid oklch(from var(--accent) l c h / 0.2);
+  border-radius: var(--r-sm);
+  max-width: 60ch;
+}
+
+.case-stack,
+.project-stack,
+.work-stack {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.01em;
+}
+
+.case-visual {
+  min-width: 0;
+}
+
+/* ─── Shipped list — dense rows with a preview ─── */
 
 .project-list {
   display: flex;
@@ -306,50 +448,63 @@ html:not(.light) .opening-image img {
 
 .project-row {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s-md);
+  grid-template-columns: 96px 1fr;
+  gap: var(--s-md) var(--s-lg);
   padding: var(--s-xl) 0;
   border-bottom: 1px solid var(--rule);
-  border-top: none;
+  align-items: start;
   transition: border-color 0.2s var(--ease);
 
-  &:hover { border-bottom-color: var(--accent); }
+  &:hover {
+    border-bottom-color: var(--accent);
+  }
 
-  @media (min-width: 640px) {
-    grid-template-columns: 180px 1fr auto;
-    align-items: baseline;
+  @media (min-width: 880px) {
+    grid-template-columns: 140px 1fr auto;
     gap: var(--s-xl);
+    align-items: center;
   }
 }
 
+.project-row-visual {
+  min-width: 0;
+}
 
+.project-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-xs);
+  min-width: 0;
+}
 
 .project-name {
   font-size: 1rem;
   font-weight: 600;
   color: var(--ink-strong);
-  display: flex;
-  align-items: center;
-  gap: var(--s-sm);
-}
-
-.project-name .featured-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
 }
 
 .project-desc {
   font-size: 0.875rem;
   color: var(--ink-muted);
   line-height: 1.6;
+  max-width: 62ch;
 }
+
+.project-row .project-links {
+  grid-column: 1 / -1;
+
+  @media (min-width: 880px) {
+    grid-column: auto;
+  }
+}
+
+/* ─── Link row ─── */
 
 .project-links {
   display: flex;
+  align-items: center;
   gap: var(--s-lg);
+  flex-wrap: wrap;
   flex-shrink: 0;
 
   & a {
@@ -360,90 +515,326 @@ html:not(.light) .opening-image img {
     align-items: center;
     gap: var(--s-2xs);
     transition: color 0.2s;
-    &:hover { color: var(--accent); }
-    & svg { width: 12px; height: 12px; }
+
+    &:hover {
+      color: var(--accent);
+    }
+
+    & svg {
+      width: 12px;
+      height: 12px;
+    }
   }
 }
 
-/* Featured project — expanded treatment */
-.project-featured {
-  padding: var(--s-2xl) 0;
+.project-links--md {
+  margin-top: var(--s-xs);
+  gap: var(--s-xl);
+
+  & a {
+    font-size: 0.8125rem;
+    gap: var(--s-xs);
+
+    & svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.project-note {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+/* ─── Screenshots ───
+   Both themes live in the DOM and CSS picks one. A display:none element never
+   intersects the viewport, so its lazy image is never fetched — only the active
+   theme is downloaded. */
+
+.shot {
+  background: var(--surface-1);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Theme switch. These only set `display`, so nothing else may set `display` on
+   .shot-img or the inactive theme would come back. The frame below is therefore
+   applied to the inner <img>, never to the <picture>. */
+.shot-img--light {
+  display: none;
+}
+
+html.light .shot-img--dark {
+  display: none;
+}
+
+html.light .shot-img--light {
+  display: block;
+}
+
+/* Feature variant — desktop and phone composed in CSS, not flattened into one
+   image. The container itself carries no frame; each capture brings its own, so
+   the page ground shows through between them in either theme. */
+.shot--feature {
+  position: relative;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.shot--feature .shot-img img {
+  background: var(--surface-1);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+}
+
+.shot--feature .shot-phone {
+  position: absolute;
+  right: 4%;
+  bottom: -6%;
+  width: 19%;
+}
+
+.shot--feature .shot-phone img {
+  background: var(--surface-1);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  /* Hard ring of page background knocks the phone out of the desktop shot.
+     Deliberately zero blur — border + blurred shadow is the banned ghost card. */
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+/* On the mirrored blocks the phone moves to the outer edge too, so every
+   composition opens away from the text rather than into it. */
+@media (min-width: 880px) {
+  .case--reverse .shot--feature .shot-phone {
+    right: auto;
+    left: 4%;
+  }
+}
+
+/* Below 640px the <picture> already swaps the main image to the phone capture,
+   so the overlay would just be the same screenshot twice. */
+@media (max-width: 640px) {
+  .shot--feature .shot-phone,
+  html.light .shot--feature .shot-phone {
+    display: none;
+  }
+}
+
+/* ─── /work index ─── */
+
+.work-intro {
+  padding-bottom: var(--s-xl);
+}
+
+.work-lead {
+  margin-top: var(--s-lg);
+  font-size: 1rem;
+  color: var(--ink-muted);
+  max-width: 62ch;
+}
+
+.work-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2xl);
+  margin-top: var(--s-2xl);
+  padding-top: var(--s-lg);
+  border-top: 1px solid var(--rule);
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2xs);
+  }
+
+  & dt {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+
+  & dd {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.work-group {
+  padding-block: var(--s-2xl);
+}
+
+.work-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-md);
+  padding-bottom: var(--s-md);
+  border-bottom: 1px solid var(--rule);
+}
+
+.work-group-head h2 {
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+.work-group-count {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.work-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--s-lg);
+  padding: var(--s-xl) 0;
   border-bottom: 1px solid var(--rule);
-  border-top: 1px solid var(--rule);
+  align-items: start;
 
-  @media (min-width: 640px) {
-    grid-template-columns: 1fr 1fr;
+  @media (min-width: 880px) {
+    grid-template-columns: 1fr 200px;
     gap: var(--s-2xl);
   }
 }
 
-.project-featured-content {
+.work-row-main {
   display: flex;
   flex-direction: column;
-  gap: var(--s-md);
+  gap: var(--s-sm);
+  min-width: 0;
 }
 
-.project-featured-name {
-  font-size: 1.25rem;
-  font-weight: 700;
+.work-row-visual {
+  min-width: 0;
+
+  @media (min-width: 880px) {
+    order: 2;
+  }
+}
+
+.work-name {
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--ink-strong);
-  display: flex;
-  align-items: center;
-  gap: var(--s-sm);
 }
 
-.project-featured-desc {
-  font-size: 0.9375rem;
+.work-pitch {
+  font-size: 0.875rem;
+  color: var(--ink);
+  line-height: 1.6;
+  max-width: 66ch;
+}
+
+.work-proof {
+  font-size: 0.8125rem;
   color: var(--ink-muted);
-  line-height: 1.65;
+  line-height: 1.6;
+  max-width: 66ch;
 }
 
-.project-featured-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-sm);
-}
+/* ─── Code excerpts ─── */
 
-.project-featured-links {
-  display: flex;
-  gap: var(--s-lg);
-  margin-top: var(--s-sm);
-  & a {
+.work-snippet {
+  margin-top: var(--s-xs);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  background: var(--surface-1);
+  overflow: hidden;
+
+  & > summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s-sm);
+    padding: var(--s-sm) var(--s-md);
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--primary);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--s-xs);
+    cursor: pointer;
+    list-style: none;
     transition: color 0.2s;
-    &:hover { color: var(--accent); }
-    & svg { width: 14px; height: 14px; }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "+";
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  &[open] > summary {
+    border-bottom: 1px solid var(--rule);
+
+    &::before {
+      content: "−";
+    }
   }
 }
 
-.project-featured-visual {
-  background: var(--surface-1);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-md);
-  aspect-ratio: 16 / 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
+.work-snippet-source {
+  font-size: 0.6875rem;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
 
-  /* Inset vignette to mask any screenshot edge artifacts */
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    box-shadow: inset 0 0 20px 8px var(--bg);
-    pointer-events: none;
-    border-radius: inherit;
-  }
+.work-snippet .astro-code {
+  margin: 0;
+  padding: var(--s-lg);
+  overflow-x: auto;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  background: var(--surface-1) !important;
+  tab-size: 2;
+}
+
+/* Shiki runs with defaultColor:false, so it emits only --shiki-dark/--shiki-light
+   custom properties and no inline color. Inline colors would outrank any selector
+   here; custom properties let the .light class drive both themes instead. */
+.work-snippet .astro-code,
+.work-snippet .astro-code span {
+  color: var(--shiki-dark, inherit);
+  font-style: var(--shiki-dark-font-style, inherit);
+  font-weight: var(--shiki-dark-font-weight, inherit);
+  text-decoration: var(--shiki-dark-text-decoration, inherit);
+}
+
+html.light .work-snippet .astro-code,
+html.light .work-snippet .astro-code span {
+  color: var(--shiki-light, inherit);
+  font-style: var(--shiki-light-font-style, inherit);
+  font-weight: var(--shiki-light-font-weight, inherit);
+  text-decoration: var(--shiki-light-text-decoration, inherit);
 }
 
 /* Tag pill — small, monochrome */

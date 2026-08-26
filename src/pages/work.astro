@@ -1,0 +1,110 @@
+---
+import { Code } from "astro:components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import ProjectShot from "../components/ProjectShot.astro";
+import ProjectLinks from "../components/ProjectLinks.astro";
+import { projects, categories, byCategory } from "../data/projects";
+import { snippetFor } from "../data/snippets";
+
+const total = projects.length;
+const live = projects.filter((p) => p.links.live).length;
+---
+
+<BaseLayout
+  title="Work — dstN."
+  description="Every project: web apps, mobile, tooling, CMS work and pipelines. Stack, what each one does, and where it runs."
+>
+  <Navigation base="/" spy={false} />
+
+  <main>
+    <section class="section work-intro">
+      <div class="w-wide">
+        <h1>Work</h1>
+        <p class="work-lead">
+          Everything I have built and kept building — side projects, client work and the tools that
+          came out of both. Where a repo is public it is linked; most are not, so the running site
+          is the link that matters.
+        </p>
+        <dl class="work-stats">
+          <div><dt>Projects</dt><dd>{total}</dd></div>
+          <div><dt>Running live</dt><dd>{live}</dd></div>
+          <div><dt>Categories</dt><dd>{categories.length}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    {
+      categories.map((category) => {
+        const items = byCategory(category.id);
+        if (items.length === 0) return null;
+        return (
+          <section id={category.id} class="section work-group">
+            <div class="w-wide">
+              <div class="work-group-head">
+                <h2>{category.label}</h2>
+                <span class="work-group-count">{items.length}</span>
+              </div>
+
+              <div class="work-list">
+                {items.map((project) => {
+                  const snippet = snippetFor(project.slug);
+                  return (
+                    <article class="work-row">
+                      <div class="work-row-main">
+                        <h3 class="work-name">{project.name}</h3>
+                        <p class="work-pitch">{project.pitch}</p>
+                        {project.proof && <p class="work-proof">{project.proof}</p>}
+                        <p class="work-stack">{project.stack.join(" · ")}</p>
+
+                        {snippet && (
+                          <details class="work-snippet">
+                            <summary>
+                              {snippet.summary}
+                              <span class="work-snippet-source">{snippet.source}</span>
+                            </summary>
+                            <Code
+                              code={snippet.code}
+                              lang={snippet.lang}
+                              themes={{ light: "vitesse-light", dark: "vitesse-dark" }}
+                              defaultColor={false}
+                            />
+                          </details>
+                        )}
+
+                        <ProjectLinks project={project} />
+                      </div>
+
+                      {project.shot && (
+                        <div class="work-row-visual">
+                          <ProjectShot
+                            slug={project.slug}
+                            frame={project.shot.frame}
+                            alt={project.shot.alt}
+                            variant="thumb"
+                          />
+                        </div>
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        );
+      })
+    }
+
+    <section class="section">
+      <div class="w-wide">
+        <a class="projects-footer-link" href="/#projects">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to the selected work
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

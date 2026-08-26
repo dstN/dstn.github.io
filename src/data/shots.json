@@ -1,0 +1,216 @@
+{
+  "bewerby": {
+    "singleTheme": false,
+    "frames": {
+      "board": {
+        "dark": {
+          "desktop": {
+            "file": "bewerby-board-dark-desktop.webp",
+            "width": 1440,
+            "height": 900
+          },
+          "mobile": {
+            "file": "bewerby-board-dark-mobile.webp",
+            "width": 780,
+            "height": 1688
+          },
+          "thumb": {
+            "file": "bewerby-board-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        },
+        "light": {
+          "desktop": {
+            "file": "bewerby-board-light-desktop.webp",
+            "width": 1440,
+            "height": 900
+          },
+          "mobile": {
+            "file": "bewerby-board-light-mobile.webp",
+            "width": 780,
+            "height": 1688
+          },
+          "thumb": {
+            "file": "bewerby-board-light-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  },
+  "eurodraft": {
+    "singleTheme": false,
+    "frames": {
+      "home": {
+        "dark": {
+          "desktop": {
+            "file": "eurodraft-home-dark-desktop.webp",
+            "width": 1440,
+            "height": 900
+          },
+          "mobile": {
+            "file": "eurodraft-home-dark-mobile.webp",
+            "width": 780,
+            "height": 1688
+          },
+          "thumb": {
+            "file": "eurodraft-home-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        },
+        "light": {
+          "desktop": {
+            "file": "eurodraft-home-light-desktop.webp",
+            "width": 1440,
+            "height": 900
+          },
+          "mobile": {
+            "file": "eurodraft-home-light-mobile.webp",
+            "width": 780,
+            "height": 1688
+          },
+          "thumb": {
+            "file": "eurodraft-home-light-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  },
+  "footyguess": {
+    "singleTheme": true,
+    "frames": {
+      "game": {
+        "dark": {
+          "thumb": {
+            "file": "footyguess-game-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  },
+  "gourmerge": {
+    "singleTheme": false,
+    "frames": {
+      "recipe": {
+        "dark": {
+          "desktop": {
+            "file": "gourmerge-recipe-dark-desktop.webp",
+            "width": 1440,
+            "height": 900
+          },
+          "mobile": {
+            "file": "gourmerge-recipe-dark-mobile.webp",
+            "width": 780,
+            "height": 1688
+          },
+          "thumb": {
+            "file": "gourmerge-recipe-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        },
+        "light": {
+          "desktop": {
+            "file": "gourmerge-recipe-light-desktop.webp",
+            "width": 1440,
+            "height": 900
+          },
+          "mobile": {
+            "file": "gourmerge-recipe-light-mobile.webp",
+            "width": 780,
+            "height": 1688
+          },
+          "thumb": {
+            "file": "gourmerge-recipe-light-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  },
+  "remcss": {
+    "singleTheme": false,
+    "frames": {
+      "docs": {
+        "dark": {
+          "thumb": {
+            "file": "remcss-docs-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        },
+        "light": {
+          "thumb": {
+            "file": "remcss-docs-light-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  },
+  "threadsdelete": {
+    "singleTheme": true,
+    "frames": {
+      "home": {
+        "dark": {
+          "thumb": {
+            "file": "threadsdelete-home-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  },
+  "twittrarchivr": {
+    "singleTheme": false,
+    "frames": {
+      "home": {
+        "dark": {
+          "thumb": {
+            "file": "twittrarchivr-home-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        },
+        "light": {
+          "thumb": {
+            "file": "twittrarchivr-home-light-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  },
+  "vsgraph": {
+    "singleTheme": false,
+    "frames": {
+      "dashboard": {
+        "dark": {
+          "thumb": {
+            "file": "vsgraph-dashboard-dark-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        },
+        "light": {
+          "thumb": {
+            "file": "vsgraph-dashboard-light-thumb.webp",
+            "width": 640,
+            "height": 400
+          }
+        }
+      }
+    }
+  }
+}

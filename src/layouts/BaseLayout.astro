@@ -12,6 +12,9 @@ const {
   title = "dstN. | Frontend Developer",
   description = "Portfolio of dstN — Frontend Developer from Hamburg. Building clean, performant, and accessible web experiences.",
 } = Astro.props;
+
+// Derived per route so /work does not claim the homepage as its canonical.
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://dstn.github.io").href;
 ---
 
 <!doctype html>
@@ -24,13 +27,13 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://dstn.github.io" />
+    <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content="Frontend Developer from Hamburg. Building clean, performant, and accessible web experiences." />
-    <meta property="og:url" content="https://dstn.github.io" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="dstN Portfolio" />
     <meta property="og:locale" content="en_US" />
 
