@@ -2,43 +2,59 @@
 const specs = [
 	{
 		label: 'Languages',
-		value: 'HTML, CSS, JavaScript, TypeScript',
-		primaries: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
+		value: 'TypeScript, JavaScript, HTML, CSS, PHP, Python',
+		primaries: ['TypeScript', 'CSS'],
 	},
 	{
 		label: 'Frameworks',
-		value: 'Vue.js, Nuxt, React, Next.js, NestJS, Twig, MJML',
-		primaries: ['Vue.js', 'Nuxt'],
+		value: 'Vue.js, Nuxt, Astro, SvelteKit, React, Next.js, NestJS',
+		primaries: ['Vue.js', 'Nuxt', 'Astro'],
+	},
+	{
+		label: 'Templating',
+		value: 'Twig, MJML',
+		primaries: [],
 	},
 	{
 		label: 'Styling',
 		value: 'Tailwind CSS, SASS, CSS Layers, oklch(), Container Queries, Bootstrap',
-		primaries: ['Tailwind CSS', 'SASS', 'CSS Layers'],
+		primaries: ['Tailwind CSS', 'CSS Layers'],
 	},
 	{
 		label: 'CMS',
-		value: 'WordPress, Joomla, NEOS',
+		value: 'WordPress, Joomla, NEOS, Directus',
 		primaries: [],
 	},
 	{
+		label: 'Data',
+		value: 'MySQL, MariaDB, Drizzle ORM, SQLAlchemy, SQLite, IndexedDB',
+		primaries: ['Drizzle ORM', 'SQLite'],
+	},
+	{
+		label: 'Testing',
+		value: 'Vitest, Playwright, axe-core',
+		primaries: ['Playwright', 'axe-core'],
+	},
+	{
 		label: 'Tooling',
-		value: 'Git, GitHub, Vite, Webpack, Docker, DDEV, npm, Postman, Figma',
+		value: 'Git, GitHub Actions, Vite, Webpack, Docker, DDEV, npm, Postman, Figma',
 		primaries: ['Git', 'Vite'],
 	},
 	{
 		label: 'Practices',
-		value: 'Responsive Design, Accessibility, SEO, CI/CD, REST APIs',
-		primaries: ['Responsive Design', 'Accessibility'],
+		value: 'Accessibility (WCAG 2.2), Privacy by Design, Responsive Design, SEO, CI/CD, REST APIs',
+		primaries: ['Accessibility (WCAG 2.2)', 'Privacy by Design'],
 	},
 ];
 
 function renderValue(value: string, primaries: string[]): string {
 	if (primaries.length === 0) return value;
-	let result = value;
-	for (const p of primaries) {
-		result = result.replace(p, `<span class="primary-tech">${p}</span>`);
-	}
-	return result;
+	// Matched per list entry, not by substring: a plain replace would wrap the
+	// "Git" inside "GitHub Actions" and corrupt the markup around it.
+	return value
+		.split(', ')
+		.map((entry) => (primaries.includes(entry) ? `<span class="primary-tech">${entry}</span>` : entry))
+		.join(', ');
 }
 ---
 
