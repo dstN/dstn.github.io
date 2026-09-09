@@ -134,7 +134,7 @@ export const projects: Project[] = [
     category: "web",
     pitch: "Search and explore a downloaded Twitter/X export locally, with nothing uploaded.",
     proof: "The whole archive is unzipped, parsed and searched in the browser — personal data never reaches a server.",
-    stack: ["Vue 3", "Vite 7", "zip.js", "Tailwind CSS 3", "vue-i18n"],
+    stack: ["Vue 3", "Vite 8", "zip.js", "Tailwind CSS 4", "vue-i18n"],
     links: { live: "https://twittrarchivr.vercel.app" },
     shot: {
       frame: "home",
